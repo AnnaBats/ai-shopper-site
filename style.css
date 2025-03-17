@@ -1,0 +1,39 @@
+/* შავი ფონი და ნარინჯისფერი ტექსტი */
+body {
+    background-color: black;
+    color: orange; 
+    font-family: Arial, sans-serif;
+}
+
+/* იისფერი სათაურები */
+h1, h2, h3 {
+    color: violet;
+}
+
+/* ლინკები ნარინჯისფერი */
+a {
+    color: orange;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* მაუსის მიტანისას ლინკები ხდება იისფერი */
+a:hover {
+    color: violet;
+}
+
+/* ღილაკები იისფერი */
+button {
+    background-color: violet;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: orange;
+    color: black;
+}
