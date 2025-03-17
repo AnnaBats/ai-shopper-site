@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Shopper - Your Smart Shopping Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">AI Shopper</h1>
+        <a href="#features" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Learn More</a>
+    </header>
+    
+    <section class="text-center py-20 bg-blue-600 text-white">
+        <h2 class="text-4xl font-bold">Your Personal AI Shopping Assistant</h2>
+        <p class="mt-4 text-lg">Find the best deals, personalized recommendations, and shop smarter!</p>
+        <a href="#signup" class="mt-6 inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold">Get Started</a>
+    </section>
+    
+    <section id="features" class="py-16 px-6 max-w-4xl mx-auto text-center">
+        <h3 class="text-3xl font-bold">Why AI Shopper?</h3>
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h4 class="text-xl font-bold">Personalized Recommendations</h4>
+                <p class="mt-2 text-gray-600">AI learns your taste and shows only the best products for you.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h4 class="text-xl font-bold">Best Deals & Price Comparison</h4>
+                <p class="mt-2 text-gray-600">Find the lowest prices across multiple online stores.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h4 class="text-xl font-bold">AR Virtual Try-On</h4>
+                <p class="mt-2 text-gray-600">See how clothes & accessories look on you before buying!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="signup" class="text-center py-16 bg-gray-200">
+        <h3 class="text-2xl font-bold">Sign up & Start Smart Shopping</h3>
+        <form class="mt-6 max-w-md mx-auto">
+            <input type="email" placeholder="Enter your email" class="w-full p-3 border border-gray-400 rounded-md">
+            <button type="submit" class="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg font-bold">Start Now</button>
+        </form>
+    </section>
+    
+    <footer class="text-center py-6 bg-gray-800 text-white">
+        <p>&copy; 2025 AI Shopper. All rights reserved.</p>
+    </footer>
+</body>
+</html>
