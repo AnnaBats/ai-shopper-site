@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -30,24 +30,26 @@
     }
 
     /* საძიებო ველის სტილები */
-    .input-field {
-      width: 100%;
-      padding: 12px;
-      border-radius: 6px;
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 8px;
+      border-radius: 6px 0 0 6px;
       border: none;
       background: #333;
       color: white;
-      margin-bottom: 10px;
     }
 
     .search-button {
-      width: 100%;
-      padding: 14px;
+      padding: 8px 12px;
       background: #FFA500;
       color: black;
       font-weight: bold;
       border: none;
-      border-radius: 6px;
+      border-radius: 0 6px 6px 0;
       transition: 0.3s;
     }
 
@@ -60,6 +62,15 @@
       .grid-cols-3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
       }
+      .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-input, .search-button {
+        width: 100%;
+        border-radius: 6px;
+        margin-top: 5px;
+      }
     }
   </style>
 </head>
@@ -68,37 +79,35 @@
   <!-- Header -->
   <header class="p-6 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
     <h1 class="text-3xl font-bold text-violet-400">ShopFlow</h1>
-    <nav class="mt-4 sm:mt-0">
+    <nav class="mt-4 sm:mt-0 flex flex-col sm:flex-row items-center">
       <a href="partners.html" class="ml-0 sm:ml-6 block sm:inline hover:text-violet-300">Partners</a>
+      <!-- საძიებო ველი ნავიგაციაში -->
+      <div class="search-container ml-0 sm:ml-6 mt-4 sm:mt-0">
+        <input type="text" id="search-input" placeholder="ძებნა..." class="search-input" />
+        <button id="search-button" class="search-button">ძებნა</button>
+      </div>
     </nav>
   </header>
 
   <!-- Welcome Text -->
   <section class="text-center py-10 px-4">
-    <h2 class="text-4xl sm:text-5xl font-bold text-violet-400">Welcome to ShopFlow</h2>
-    <p class="mt-4 text-lg sm:text-xl text-orange-300">Online shopping made super easy with AI.</p>
-  </section>
-
-  <!-- Search Functionality -->
-  <section class="text-center py-6 px-4">
-    <input type="text" id="search-input" placeholder="Search products..." class="input-field" />
-    <button id="search-button" class="search-button">Search</button>
-    <div id="search-results" class="mt-4"></div>
+    <h2 class="text-4xl sm:text-5xl font-bold text-violet-400">მოგესალმებით ShopFlow-ში</h2>
+    <p class="mt-4 text-lg sm:text-xl text-orange-300">ონლაინ შოპინგი მარტივად, AI-ის დახმარებით.</p>
   </section>
 
   <!-- Main Buttons (Responsive Grid) -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto text-center py-10 px-4">
-    <a href="about.html" class="cube">About Us</a>
-    <a href="shop.html" class="cube">Start Shopping</a>
-    <a href="offers.html" class="cube">What We Offer</a>
-    <a href="deals.html" class="cube">Deals & Discounts</a>
-    <a href="contact.html" class="cube">Contact Us</a>
-    <a href="https://annabats.github.io/shopflow-register" class="cube">Register</a>
+    <a href="about.html" class="cube">ჩვენს შესახებ</a>
+    <a href="shop.html" class="cube">დაიწყეთ შოპინგი</a>
+    <a href="offers.html" class="cube">რას ვთავაზობთ</a>
+    <a href="deals.html" class="cube">შეთავაზებები და ფასდაკლებები</a>
+    <a href="contact.html" class="cube">დაგვიკავშირდით</a>
+    <a href="https://annabats.github.io/shopflow-register" class="cube">რეგისტრაცია</a>
   </section>
 
   <!-- Social Media Links -->
   <section class="text-center py-8 px-4">
-    <h3 class="text-2xl text-violet-400 font-bold mb-4">Follow Us</h3>
+    <h3 class="text-2xl text-violet-400 font-bold mb-4">გამოგვყევით სოციალურ ქსელებში</h3>
     <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
       <a href="https://facebook.com" target="_blank" class="social-link">Facebook</a>
       <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
@@ -108,7 +117,7 @@
 
   <!-- Footer -->
   <footer class="text-center py-6 text-sm text-gray-500">
-    © 2025 ShopFlow. All rights reserved.
+    © 2025 ShopFlow. ყველა უფლება დაცულია.
   </footer>
 
   <!-- Search Functionality Script -->
@@ -118,13 +127,13 @@
       const resultsContainer = document.getElementById('search-results');
       resultsContainer.innerHTML = '';
 
-      // Dummy product data
+      // პროდუქტის მონაცემები
       const products = [
-        'Smartphone',
-        'Laptop',
-        'Headphones',
-        'Smartwatch',
-        'Camera'
+        'სმარტფონი',
+        'ლეპტოპი',
+        'ყურსასმენები',
+        'სმარტ საათი',
+        'კამერა'
       ];
 
       const filteredProducts = products.filter(product => product.toLowerCase().includes(query));
@@ -136,13 +145,14 @@
           resultsContainer.appendChild(productElement);
         });
       } else {
-        resultsContainer.textContent = 'No products found.';
+        resultsContainer.textContent = 'პროდუქტი ვერ მოიძებნა.';
       }
     });
   </script>
 
 </body>
 </html>
+
 
  
 
