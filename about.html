@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us – ShopFlow</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopFlow</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-orange-400 font-sans">
 
-  <header class="p-4 flex justify-between items-center">
+  <header class="p-6 flex justify-between items-center">
     <h1 class="text-3xl font-bold text-violet-400">ShopFlow</h1>
     <nav>
-      <a href="index.html" class="ml-4 hover:text-violet-300">← Back to Home</a>
+      <a href="index.html" class="ml-6 hover:text-violet-300">Home</a>
+      <a href="about.html" class="ml-6 hover:text-violet-300">About Us</a>
+      <a href="contact.html" class="ml-6 hover:text-violet-300">Contact</a>
     </nav>
   </header>
 
-  <section class="max-w-3xl mx-auto py-16 px-6 text-center">
-    <h2 class="text-4xl font-bold text-violet-400 mb-6">About ShopFlow</h2>
+  <section class="text-center py-16">
+    <h2 class="text-5xl font-bold text-violet-400">Welcome to ShopFlow</h2>
+    <p class="mt-4 text-lg text-orange-300">Online shopping made super easy with AI.</p>
+  </section>
 
-    <p class="text-gray-300 mb-4">
-      ShopFlow was created by Anna Batsikadze, a Georgian girl who truly enjoys online shopping.
-      Anna wanted to make the experience easier, faster, and smarter for everyone.
-      From a simple idea, ShopFlow turned into a full project where shopping meets smart technology.
-    </p>
-
-    <p class="text-gray-300 mb-8">
-      From the very beginning, Anna was supported by Shorena — the person who believed in the idea from day one.
-    </p>
-
-    <h3 class="text-2xl font-bold text-violet-400 mt-12 mb-4">Why Choose ShopFlow</h3>
-    <ul class="text-left max-w-xl mx-auto text-gray-300 space-y-3 text-base">
-      <li>• Personalized product suggestions based on your style and budget</li>
-      <li>• Price comparison across multiple stores in seconds</li>
-      <li>• Easy access to current deals and discounts</li>
-      <li>• Fast and simple shopping experience</li>
-      <li>• Designed with users in mind – no clutter, no confusion</li>
-    </ul>
+  <section class="grid grid-cols-3 gap-6 max-w-5xl mx-auto text-center py-12">
+    <a href="about.html" class="button">About Us</a>
+    <a href="shop.html" class="button">Start Shopping</a>
+    <a href="offers.html" class="button">What We Offer</a>
+    <a href="deals.html" class="button">Deals & Discounts</a>
+    <a href="contact.html" class="button">Contact Us</a>
   </section>
 
   <footer class="text-center py-6 text-sm text-gray-500">
     © 2025 ShopFlow. All rights reserved.
   </footer>
 
+  <style>
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      height: 120px;
+      background-color: #FFA500; /* ნარინჯისფერი */
+      color: black;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.3s;
+      box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
+      margin: auto;
+    }
+
+    .button:hover {
+      background-color: #8A2BE2; /* იისფერი Hover-ზე */
+      color: black;
+      transform: scale(1.05);
+    }
+  </style>
+
 </body>
 </html>
+
