@@ -1,107 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register – ShopFlow</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ShopFlow</title>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+    <script>
+        // Firebase კონფიგურაცია (შენი მონაცემებით ჩასვი)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
+            authDomain: "shopflow-register.firebaseapp.com",
+            projectId: "shopflow-register",
+            storageBucket: "shopflow-register.appspot.com",
+            messagingSenderId: "13792512228",
+            appId: "1:13792512228:web:5aab21eecccd8c350404f1",
+            measurementId: "G-NCRZ1S0PDC"
+        };
+
+        // Firebase-ის ინიციალიზაცია
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 165, 0, 0.2);
+            border-radius: 10px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: orange;
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: violet;
+        }
+    </style>
 </head>
-<body class="bg-black text-orange-400 font-sans">
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="registerUser()">Sign Up</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
 
-  <!-- Header -->
-  <header class="p-6 flex justify-between items-center">
-    <h1 class="text-3xl font-bold text-violet-400">ShopFlow</h1>
-    <nav>
-      <a href="https://annabats.github.io" class="ml-6 hover:text-violet-300">← Back to Home</a>
-    </nav>
-  </header>
+    <script>
+        function registerUser() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
 
-  <!-- Registration Form -->
-  <section class="text-center py-12">
-    <h3 class="text-4xl text-violet-400 font-bold mb-6">Create Your Account</h3>
-    <form id="register-form" class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg shadow-lg">
-      <input type="text" id="name" placeholder="Full Name" class="input-field mb-4" required />
-      <input type="email" id="email" placeholder="Email" class="input-field mb-4" required />
-      <input type="password" id="password" placeholder="Password" class="input-field mb-6" required />
-      <button type="submit" class="register-button">Register</button>
-      <p id="message" class="mt-4 text-sm text-green-400"></p>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center py-6 text-sm text-gray-500">
-    © 2025 ShopFlow. All rights reserved.
-  </footer>
-
-  <!-- Firebase Configuration and Initialization -->
-  <script>
-    // Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
-      authDomain: "shopflow-register.firebaseapp.com",
-      projectId: "shopflow-register",
-      storageBucket: "shopflow-register.firebasestorage.app",
-      messagingSenderId: "13792512228",
-      appId: "1:13792512228:web:5aab21eecccd8c350404f1",
-      measurementId: "G-NCRZ1S0PDC"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-  </script>
-
-  <!-- Registration Logic -->
-  <script>
-    const form = document.getElementById('register-form');
-    const message = document.getElementById('message');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          message.textContent = "Registration successful!";
-          form.reset();
-        })
-        .catch((error) => {
-          message.textContent = error.message;
-        });
-    });
-  </script>
-
-  <!-- Styles -->
-  <style>
-    .input-field {
-      width: 100%;
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      background: #333;
-      color: white;
-    }
-
-    .register-button {
-      width: 100%;
-      padding: 14px;
-      background: #FFA500;
-      color: black;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-
-    .register-button:hover {
-      background: #8A2BE2;
-    }
-  </style>
-
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Registration successful! Welcome to ShopFlow.");
+                    window.location.href = "profile.html"; // წარმატების შემთხვევაში გადამისამართება პროფილის გვერდზე
+                })
+                .catch((error) => {
+                    errorMessage.textContent = error.message; // შეცდომის ჩვენება
+                });
+        }
+    </script>
 </body>
 </html>
+
 
