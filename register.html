@@ -9,7 +9,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
-        // Your Firebase configuration
+        // ✅ Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
             authDomain: "shopflow-register.firebaseapp.com",
@@ -20,23 +20,28 @@
             measurementId: "G-NCRZ1S0PDC"
         };
 
-        // Initialize Firebase
+        // ✅ Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // Function to register a new user
+        // ✅ Function to register a new user
         window.registerUser = function () {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("error-message");
 
+            if (!email || !password) {
+                errorMessage.textContent = "⚠️ Please enter both email and password!";
+                return;
+            }
+
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    alert("Registration successful! Welcome to ShopFlow.");
+                    alert("✅ Registration successful! Welcome to ShopFlow.");
                     window.location.href = "profile.html"; // Redirect to profile page
                 })
                 .catch((error) => {
-                    errorMessage.textContent = error.message;
+                    errorMessage.textContent = "❌ Error: " + error.message;
                 });
         };
     </script>
@@ -86,8 +91,6 @@
         <p id="error-message" style="color: red;"></p>
     </div>
 </body>
-</html>
-
 </html>
 
 
