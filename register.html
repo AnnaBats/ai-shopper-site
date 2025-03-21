@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | ShopFlow</title>
 
-    <!-- Firebase CDN ბიბლიოთეკები -->
+    <!-- Firebase CDN -->
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
 
     <script>
-        // ✅ Firebase კონფიგურაცია (CDN ვერსია)
+        // ✅ Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
             authDomain: "shopflow-register.firebaseapp.com",
@@ -21,72 +21,74 @@
             measurementId: "G-NCRZ1S0PDC"
         };
 
-        // ✅ Firebase ინიციალიზაცია
+        // ✅ Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
-        // ✅ რეგისტრაციის ფუნქცია
+        // ✅ Registration function
         function registerUser() {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("error-message");
 
             if (!email || !password) {
-                errorMessage.textContent = "⚠️ Please enter both email and password!";
+                errorMessage.innerText = "Please enter email and password.";
                 return;
             }
 
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    alert("✅ Registration successful! Welcome to ShopFlow.");
-                    window.location.href = "profile.html"; // გადამისამართება პროფილის გვერდზე
+                    const user = userCredential.user;
+                    alert("Registration successful! You can now log in.");
+                    window.location.href = "login.html"; // Redirect to login page
                 })
                 .catch((error) => {
-                    errorMessage.textContent = "❌ Error: " + error.message;
+                    errorMessage.innerText = error.message;
                 });
         }
     </script>
 
     <style>
         body {
-            background-color: black;
-            color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #000;
+            color: white;
         }
         .container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background: rgba(255, 165, 0, 0.2);
-            border-radius: 10px;
+            margin-top: 50px;
         }
         input {
-            width: 90%;
+            display: block;
+            width: 300px;
+            margin: 10px auto;
             padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
         }
         button {
-            width: 100%;
-            padding: 10px;
-            background: orange;
-            color: black;
-            font-weight: bold;
+            background-color: orange;
+            color: white;
             border: none;
+            padding: 10px 20px;
             cursor: pointer;
-            border-radius: 5px;
         }
         button:hover {
-            background: violet;
+            background-color: purple;
+        }
+        #error-message {
+            color: red;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h2>Register</h2>
-        <input type="email" id="
+        <h2>Register to ShopFlow</h2>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <button onclick="registerUser()">Register</button>
+        <p id="error-message"></p>
+        <p>Already have an account? <a href="login.html" style="color: orange;">Login here</a></p>
+    </div>
 
-
-
+</body>
+</html>
