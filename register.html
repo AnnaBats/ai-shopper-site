@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | ShopFlow</title>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-    <script>
-        // Firebase კონფიგურაცია (შენი მონაცემებით ჩასვი)
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+        // Your Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
             authDomain: "shopflow-register.firebaseapp.com",
@@ -18,9 +20,27 @@
             measurementId: "G-NCRZ1S0PDC"
         };
 
-        // Firebase-ის ინიციალიზაცია
-        firebase.initializeApp(firebaseConfig);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Function to register a new user
+        window.registerUser = function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Registration successful! Welcome to ShopFlow.");
+                    window.location.href = "profile.html"; // Redirect to profile page
+                })
+                .catch((error) => {
+                    errorMessage.textContent = error.message;
+                });
+        };
     </script>
+
     <style>
         body {
             background-color: black;
@@ -65,24 +85,9 @@
         <button onclick="registerUser()">Sign Up</button>
         <p id="error-message" style="color: red;"></p>
     </div>
-
-    <script>
-        function registerUser() {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const errorMessage = document.getElementById("error-message");
-
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    alert("Registration successful! Welcome to ShopFlow.");
-                    window.location.href = "profile.html"; // წარმატების შემთხვევაში გადამისამართება პროფილის გვერდზე
-                })
-                .catch((error) => {
-                    errorMessage.textContent = error.message; // შეცდომის ჩვენება
-                });
-        }
-    </script>
 </body>
+</html>
+
 </html>
 
 
