@@ -6,10 +6,62 @@
   <title>ShopFlow</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <style>
+    /* კუბიკების სტილები */
+    .cube {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      background-color: #FFA500;
+      color: black;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.3s;
+      box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .cube:hover {
+      background-color: #8A2BE2;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    /* საძიებო ველის სტილები */
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background: #333;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .search-button {
+      width: 100%;
+      padding: 14px;
+      background: #FFA500;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .search-button:hover {
+      background: #8A2BE2;
+    }
+
+    /* მობილურისთვის ოპტიმიზაცია */
+    @media (max-width: 640px) {
+      .grid-cols-3 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
+  </style>
 </head>
 <body class="bg-black text-orange-400 font-sans">
 
@@ -29,19 +81,19 @@
 
   <!-- Search Functionality -->
   <section class="text-center py-6 px-4">
-    <input type="text" id="search-input" placeholder="Search products..." class="input-field mb-4" />
+    <input type="text" id="search-input" placeholder="Search products..." class="input-field" />
     <button id="search-button" class="search-button">Search</button>
     <div id="search-results" class="mt-4"></div>
   </section>
 
   <!-- Main Buttons (Responsive Grid) -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto text-center py-10 px-4">
-    <a href="about.html" class="button">About Us</a>
-    <a href="shop.html" class="button">Start Shopping</a>
-    <a href="offers.html" class="button">What We Offer</a>
-    <a href="deals.html" class="button">Deals & Discounts</a>
-    <a href="contact.html" class="button">Contact Us</a>
-    <a href="https://annabats.github.io/shopflow-register" class="button">Register</a>
+    <a href="about.html" class="cube">About Us</a>
+    <a href="shop.html" class="cube">Start Shopping</a>
+    <a href="offers.html" class="cube">What We Offer</a>
+    <a href="deals.html" class="cube">Deals & Discounts</a>
+    <a href="contact.html" class="cube">Contact Us</a>
+    <a href="https://annabats.github.io/shopflow-register" class="cube">Register</a>
   </section>
 
   <!-- Social Media Links -->
@@ -58,25 +110,6 @@
   <footer class="text-center py-6 text-sm text-gray-500">
     © 2025 ShopFlow. All rights reserved.
   </footer>
-
-  <!-- Firebase Configuration and Initialization -->
-  <script>
-    // Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
-      authDomain: "shopflow-register.firebaseapp.com",
-      projectId: "shopflow-register",
-      storageBucket: "shopflow-register.firebasestorage.app",
-      messagingSenderId: "13792512228",
-      appId: "1:13792512228:web:5aab21eecccd8c350404f1",
-      measurementId: "G-NCRZ1S0PDC"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    const auth = firebase.auth();
-  </script>
 
   <!-- Search Functionality Script -->
   <script>
@@ -108,13 +141,9 @@
     });
   </script>
 
-  <!-- Styles -->
-  <style>
-    .button {
-      display: flex;
-      justify-content: center;
-      align-items: center
-::contentReference[oaicite:0]{index=0}
+</body>
+</html>
+
  
 
 
