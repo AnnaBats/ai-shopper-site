@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ka">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* კუბიკების სტილები */
+    /* Cube Styles */
     .cube {
       display: flex;
       justify-content: center;
@@ -29,7 +29,7 @@
       transform: scale(1.05);
     }
 
-    /* საძიებო ველის სტილები */
+    /* Search Field */
     .search-container {
       display: flex;
       align-items: center;
@@ -57,7 +57,7 @@
       background: #8A2BE2;
     }
 
-    /* მობილურისთვის ოპტიმიზაცია */
+    /* Mobile Optimization */
     @media (max-width: 640px) {
       .grid-cols-3 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -79,35 +79,31 @@
   <!-- Header -->
   <header class="p-6 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
     <h1 class="text-3xl font-bold text-violet-400">ShopFlow</h1>
-    <nav class="mt-4 sm:mt-0 flex flex-col sm:flex-row items-center">
-      <a href="partners.html" class="ml-0 sm:ml-6 block sm:inline hover:text-violet-300">Partners</a>
-      <!-- საძიებო ველი ნავიგაციაში -->
-      <div class="search-container ml-0 sm:ml-6 mt-4 sm:mt-0">
-        <input type="text" id="search-input" placeholder="ძებნა..." class="search-input" />
-        <button id="search-button" class="search-button">ძებნა</button>
-      </div>
-    </nav>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search..." class="search-input" />
+      <button id="search-button" class="search-button">🔍</button>
+    </div>
   </header>
 
   <!-- Welcome Text -->
   <section class="text-center py-10 px-4">
-    <h2 class="text-4xl sm:text-5xl font-bold text-violet-400">მოგესალმებით ShopFlow-ში</h2>
-    <p class="mt-4 text-lg sm:text-xl text-orange-300">ონლაინ შოპინგი მარტივად, AI-ის დახმარებით.</p>
+    <h2 class="text-4xl sm:text-5xl font-bold text-violet-400">Welcome to ShopFlow</h2>
+    <p class="mt-4 text-lg sm:text-xl text-orange-300">The easiest way to shop online with AI assistance.</p>
   </section>
 
-  <!-- Main Buttons (Responsive Grid) -->
+  <!-- Main Navigation Cubes -->
   <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto text-center py-10 px-4">
-    <a href="about.html" class="cube">ჩვენს შესახებ</a>
-    <a href="shop.html" class="cube">დაიწყეთ შოპინგი</a>
-    <a href="offers.html" class="cube">რას ვთავაზობთ</a>
-    <a href="deals.html" class="cube">შეთავაზებები და ფასდაკლებები</a>
-    <a href="contact.html" class="cube">დაგვიკავშირდით</a>
-    <a href="https://annabats.github.io/shopflow-register" class="cube">რეგისტრაცია</a>
+    <a href="about.html" class="cube">About Us</a>
+    <a href="shop.html" class="cube">Start Shopping</a>
+    <a href="offers.html" class="cube">What We Offer</a>
+    <a href="deals.html" class="cube">Deals & Discounts</a>
+    <a href="contact.html" class="cube">Contact Us</a>
+    <a href="https://annabats.github.io/shopflow-register" class="cube">Register</a>
   </section>
 
   <!-- Social Media Links -->
   <section class="text-center py-8 px-4">
-    <h3 class="text-2xl text-violet-400 font-bold mb-4">გამოგვყევით სოციალურ ქსელებში</h3>
+    <h3 class="text-2xl text-violet-400 font-bold mb-4">Follow Us</h3>
     <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
       <a href="https://facebook.com" target="_blank" class="social-link">Facebook</a>
       <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
@@ -117,41 +113,20 @@
 
   <!-- Footer -->
   <footer class="text-center py-6 text-sm text-gray-500">
-    © 2025 ShopFlow. ყველა უფლება დაცულია.
+    © 2025 ShopFlow. All rights reserved.
   </footer>
 
   <!-- Search Functionality Script -->
   <script>
     document.getElementById('search-button').addEventListener('click', function() {
       const query = document.getElementById('search-input').value.toLowerCase();
-      const resultsContainer = document.getElementById('search-results');
-      resultsContainer.innerHTML = '';
-
-      // პროდუქტის მონაცემები
-      const products = [
-        'სმარტფონი',
-        'ლეპტოპი',
-        'ყურსასმენები',
-        'სმარტ საათი',
-        'კამერა'
-      ];
-
-      const filteredProducts = products.filter(product => product.toLowerCase().includes(query));
-
-      if (filteredProducts.length > 0) {
-        filteredProducts.forEach(product => {
-          const productElement = document.createElement('p');
-          productElement.textContent = product;
-          resultsContainer.appendChild(productElement);
-        });
-      } else {
-        resultsContainer.textContent = 'პროდუქტი ვერ მოიძებნა.';
-      }
+      alert("Search feature coming soon: " + query);
     });
   </script>
 
 </body>
 </html>
+
 
 
  
