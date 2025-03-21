@@ -6,6 +6,10 @@
   <title>ShopFlow</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
 </head>
 <body class="bg-black text-orange-400 font-sans">
 
@@ -21,6 +25,13 @@
   <section class="text-center py-10 px-4">
     <h2 class="text-4xl sm:text-5xl font-bold text-violet-400">Welcome to ShopFlow</h2>
     <p class="mt-4 text-lg sm:text-xl text-orange-300">Online shopping made super easy with AI.</p>
+  </section>
+
+  <!-- Search Functionality -->
+  <section class="text-center py-6 px-4">
+    <input type="text" id="search-input" placeholder="Search products..." class="input-field mb-4" />
+    <button id="search-button" class="search-button">Search</button>
+    <div id="search-results" class="mt-4"></div>
   </section>
 
   <!-- Main Buttons (Responsive Grid) -->
@@ -48,44 +59,64 @@
     © 2025 ShopFlow. All rights reserved.
   </footer>
 
+  <!-- Firebase Configuration and Initialization -->
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
+      authDomain: "shopflow-register.firebaseapp.com",
+      projectId: "shopflow-register",
+      storageBucket: "shopflow-register.firebasestorage.app",
+      messagingSenderId: "13792512228",
+      appId: "1:13792512228:web:5aab21eecccd8c350404f1",
+      measurementId: "G-NCRZ1S0PDC"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const auth = firebase.auth();
+  </script>
+
+  <!-- Search Functionality Script -->
+  <script>
+    document.getElementById('search-button').addEventListener('click', function() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const resultsContainer = document.getElementById('search-results');
+      resultsContainer.innerHTML = '';
+
+      // Dummy product data
+      const products = [
+        'Smartphone',
+        'Laptop',
+        'Headphones',
+        'Smartwatch',
+        'Camera'
+      ];
+
+      const filteredProducts = products.filter(product => product.toLowerCase().includes(query));
+
+      if (filteredProducts.length > 0) {
+        filteredProducts.forEach(product => {
+          const productElement = document.createElement('p');
+          productElement.textContent = product;
+          resultsContainer.appendChild(productElement);
+        });
+      } else {
+        resultsContainer.textContent = 'No products found.';
+      }
+    });
+  </script>
+
   <!-- Styles -->
   <style>
     .button {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100px;
-      background-color: #FFA500;
-      color: black;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
-      box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
-    }
+      align-items: center
+::contentReference[oaicite:0]{index=0}
+ 
 
-    .button:hover {
-      background-color: #8A2BE2;
-      color: black;
-      transform: scale(1.05);
-    }
-
-    .social-link {
-      color: #FFA500;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: 0.3s;
-      text-decoration: none;
-    }
-
-    .social-link:hover {
-      color: #8A2BE2;
-    }
-  </style>
-
-</body>
-</html>
 
 
 
