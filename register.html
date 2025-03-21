@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | ShopFlow</title>
-    <script type="module">
-        // Import Firebase modules
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
-        // ✅ Firebase Configuration
+    <!-- Firebase CDN ბიბლიოთეკები -->
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+
+    <script>
+        // ✅ Firebase კონფიგურაცია (CDN ვერსია)
         const firebaseConfig = {
             apiKey: "AIzaSyBvmIHurVj43aum1UXLLdYCRYCQnNt6NBA",
             authDomain: "shopflow-register.firebaseapp.com",
@@ -20,12 +21,12 @@
             measurementId: "G-NCRZ1S0PDC"
         };
 
-        // ✅ Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+        // ✅ Firebase ინიციალიზაცია
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
 
-        // ✅ Function to register a new user
-        window.registerUser = function () {
+        // ✅ რეგისტრაციის ფუნქცია
+        function registerUser() {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("error-message");
@@ -35,15 +36,15 @@
                 return;
             }
 
-            createUserWithEmailAndPassword(auth, email, password)
+            auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     alert("✅ Registration successful! Welcome to ShopFlow.");
-                    window.location.href = "profile.html"; // Redirect to profile page
+                    window.location.href = "profile.html"; // გადამისამართება პროფილის გვერდზე
                 })
                 .catch((error) => {
                     errorMessage.textContent = "❌ Error: " + error.message;
                 });
-        };
+        }
     </script>
 
     <style>
@@ -85,12 +86,7 @@
 <body>
     <div class="container">
         <h2>Register</h2>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button onclick="registerUser()">Sign Up</button>
-        <p id="error-message" style="color: red;"></p>
-    </div>
-</body>
-</html>
+        <input type="email" id="
+
 
 
